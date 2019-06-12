@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '/dist/')));
+app.use(express.static(path.join(__dirname, '/dist/RedVolucionariosAdmin/')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/dist/RedVolucionariosAdmin/index.html'));
