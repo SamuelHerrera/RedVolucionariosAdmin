@@ -8,29 +8,21 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SunburstComponent } from './reportes/sunburst/sunburst.component';
-
-import { D3Service, D3_DIRECTIVES } from './shared/d3';
-import { GraphComponent } from './shared/visuals/graph/graph.component';
-import { SHARED_VISUALS } from './shared/visuals/graph';
-import { RelationsComponent } from './reportes/relations/relations.component';
+import { LoginModule } from './login/login.module';
+import { ContainerModule } from './container/container.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SunburstComponent,
-    GraphComponent,
-    ...SHARED_VISUALS,
-    ...D3_DIRECTIVES,
-    RelationsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, MatSidenavModule,
-    MatToolbarModule, MatButtonModule, MatIconModule
+    BrowserAnimationsModule,
+    MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule,
+    LoginModule,
+    ContainerModule
   ],
-  providers: [D3Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

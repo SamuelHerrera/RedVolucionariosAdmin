@@ -1,0 +1,53 @@
+$ancho-de-columna: 400px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+#background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+img {
+  margin: 30px;
+  //   width: 300px;
+}
+
+h2 {
+  margin: 30px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-form-field {
+  width: $ancho-de-columna;
+  margin: 10px;
+}
+
+.fila {
+  width: $ancho-de-columna;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px
+}
+
+.fila-end {
+  justify-content: flex-end;
+}

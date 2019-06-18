@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SunburstComponent } from './reportes/sunburst/sunburst.component';
-import { RelationsComponent } from './reportes/relations/relations.component';
 
 const routes: Routes = [
   {
-    path: 'nodos',
-    component: RelationsComponent
+    path: 'login',
+    loadChildren: './login/login.module#LoginModule'
   },
   {
-    path: 'sunburst',
-    component: SunburstComponent
+    path: 'app',
+    loadChildren: './container/container.module#ContainerModule'
   },
   {
     path: '',
-    redirectTo: 'nodos',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];
