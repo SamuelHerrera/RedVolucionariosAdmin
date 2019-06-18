@@ -28,6 +28,10 @@ const routes: Routes = [
       }, {
         path: 'retos',
         loadChildren: './retos/retos.module#RetosModule',
+      }, {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'administradores'
       },
     ]
   }

@@ -1,0 +1,69 @@
+.example-container {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+mat-table {
+    width: 1500px;
+}
+
+:host ::ng-deep mat-tab-group {
+    height: 100%;
+}
+
+:host ::ng-deep mat-tab-body {
+    height: 100%;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    height: 100%;
+}
+
+:host ::ng-deep .mat-tab-group {
+    background: #ffe1d4;
+    background-image: url('/assets/bk-B.png');
+}
+
+td.mat-column-star {
+    width: 20px;
+    padding-right: 8px;
+}
+
+th.mat-column-position,
+td.mat-column-position {
+    padding-left: 8px;
+}
+
+.mat-table-sticky:first-child {
+    border-right: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky:last-child {
+    border-left: 1px solid #e0e0e0;
+}
+
+.margin-20 {
+    margin: 20px;
+
+    .row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .right {
+        justify-content: flex-end;
+    }
+
+    .wrap {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .example-spacer {
+        flex: 1 1 auto;
+    }
+}

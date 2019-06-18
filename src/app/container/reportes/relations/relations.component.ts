@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import APP_CONFIG from 'src/app/container/shared/graph.config';
-import { Node, Link } from 'src/app/container/shared/d3';
+import APP_CONFIG from 'src/app/container/reportes/shared/graph.config';
+import { Node, Link } from 'src/app/container/reportes/shared/d3';
 
 @Component({
   selector: 'app-relations',

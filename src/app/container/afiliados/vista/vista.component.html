@@ -1,0 +1,90 @@
+<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+  <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+    <div *ngIf="tab==='Buscar'" class="example-container">
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="nombre" sticky>
+          <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.estado}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="distrito">
+          <mat-header-cell *matHeaderCellDef> Distrito </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.distrito}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="seccional">
+          <mat-header-cell *matHeaderCellDef> Seccional </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.seccional}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estatus">
+          <mat-header-cell *matHeaderCellDef> Estatus </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.estatus}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="acciones" stickyEnd>
+          <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="" (click)="addTab(element, false)">
+              <mat-icon>pageview</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="" (click)="addTab(element, true)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="" (click)="borraRegistro(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+    <div *ngIf="tab!=='Buscar'" class="example-container">
+      <mat-card class="margin-20">
+        <mat-toolbar *ngIf="tabsData[index-1]" color="primary">
+          <span>{{tabsData[index-1].nombre}} - Sec: {{tabsData[index-1].seccional}}</span>
+          <span class="example-spacer"></span>
+          <button mat-raised-button class="example-delete-tab-button" color="success"
+            (click)="tabsData[index-1].nodeView = !tabsData[index-1].nodeView">
+            Nodo
+          </button>
+          <button mat-raised-button class="example-delete-tab-button" color="success" *ngIf="tabsData[index-1].editable"
+            (click)="removeTab(index, tabsData[index-1], true)">
+            Guardar
+          </button>
+          <button mat-raised-button class="example-delete-tab-button" color="warning"
+            *ngIf="!tabsData[index-1].editable" (click)="tabsData[index-1].editable = true;">
+            Editar
+          </button>
+          <button mat-button class="example-delete-tab-button" [disabled]="tabs.length === 1"
+            (click)="removeTab(index, tabsData[index-1])">
+            Cerrar
+          </button>
+        </mat-toolbar>
+        <div *ngIf="!tabsData[index-1].nodeView" class="row">
+          <div class="row wrap">
+            <mat-form-field *ngFor="let field of tabsData[index-1] | keyvalue">
+              <input matInput [placeholder]="field.key" [(ngModel)]="field.value"
+                [disabled]="!tabsData[index-1].editable">
+            </mat-form-field>
+          </div>
+        </div>
+        <div *ngIf="tabsData[index-1].nodeView" class="row">
+            <div class="row wrap">
+              <app-relations></app-relations>
+            </div>
+          </div>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>
