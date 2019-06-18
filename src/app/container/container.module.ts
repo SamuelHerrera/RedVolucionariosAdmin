@@ -11,6 +11,7 @@ import { GraphComponent } from './shared/visuals/graph/graph.component';
 import { SHARED_VISUALS } from './shared/visuals/graph';
 import { D3_DIRECTIVES, D3Service } from './shared/d3';
 import { RelationsComponent } from './reportes/relations/relations.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RelationsComponent } from './reportes/relations/relations.component';
     CommonModule,
     ContainerRoutingModule,
     MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule,
+    MatExpansionModule
   ],
   providers: [D3Service],
 })

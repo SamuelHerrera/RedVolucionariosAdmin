@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-container',
@@ -8,17 +8,39 @@ import { Router } from '@angular/router';
 })
 export class ContainerComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  menu = [
+    {
+      titulo: 'Administradores',
+      ruta: 'administradores'
+    }, {
+      titulo: 'Afiliados',
+      ruta: 'afiliados'
+    }, {
+      titulo: 'Cuestionario',
+      ruta: 'cuestionario'
+    }, {
+      titulo: 'Notas',
+      ruta: 'notas'
+    }, {
+      titulo: 'Eventos',
+      ruta: 'eventos'
+    }, {
+      titulo: 'Promociones',
+      ruta: 'promociones'
+    }, {
+      titulo: 'Retos',
+      ruta: 'retos'
+    },
+  ];
+
+  @ViewChild('sidenav', { static: false }) public sidenav: MatSidenav;
+
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  redirectToNodes() {
-    this.router.navigate(['nodos']);
-  }
-
-  redirectToSunburst() {
-    this.router.navigate(['sunburst']);
+    setTimeout(() => {
+      this.sidenav.open();
+    }, 1500);
   }
 
 }
