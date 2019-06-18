@@ -1,9 +1,9 @@
 <div class="container">
-  <video autoplay muted id="background">
-    <source src="assets/revslider.mp4" type="video/mp4"> 
+  <video autoplay muted autoplay id="background">
+    <source src="assets/revslider.mp4" type="video/mp4">
   </video>
   <mat-card class="mat-elevation-z6">
-    <img src="http://redjovenesxmexico.com/wp-content/uploads/2017/07/logo-rdjxm_web.png" alt="">
+    <img src="assets/logo-rdjxm_web.png" alt="">
     <h2>Iniciar Sesión</h2>
     <mat-form-field>
       <input matInput placeholder="Email" [formControl]="emailFormControl" value="admin@admin.com">
@@ -22,7 +22,7 @@
       <button mat-button>¿Has olvidado la contraseña?</button>
     </div>
     <div class="fila fila-end">
-      <button mat-flat-button color="primary">Entrar</button>
+      <button mat-flat-button color="primary" (click)="login()">Entrar</button>
     </div>
   </mat-card>
 </div>
