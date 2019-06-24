@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-container',
@@ -33,14 +34,28 @@ export class ContainerComponent implements OnInit {
     },
   ];
 
+  title: string;
+
   @ViewChild('sidenav', { static: false }) public sidenav: MatSidenav;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.sidenav.open();
     }, 1500);
+  
+
+    // this.menu.
+    // this.router.url
+  }
+
+  logout() {
+    this.router.navigate(['login']);
+  }
+
+  setTitle(title: string){
+    this.title=title;
   }
 
 }

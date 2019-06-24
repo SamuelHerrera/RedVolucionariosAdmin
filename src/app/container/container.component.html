@@ -1,10 +1,10 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" class="mat-elevation-z6">
+  <mat-sidenav #sidenav mode="side" class="mat-elevation-z6" (opened)="isOpen=true;" (closed)="isOpen=false;">
     <div class="container-column">
       <img src="assets/logo-rdjxm_web.png" alt="">
       <ng-container *ngFor="let item of menu">
         <a *ngIf="item" class="full-width" mat-button [routerLink]="[item.ruta]" color="primary"
-          routerLinkActive="mat-raised-button">{{item.titulo}}</a>
+          routerLinkActive="mat-raised-button" (click)="setTitle(item.titulo)">{{item.titulo}}</a>
         <!-- <a *ngIf="item.selected" class="full-width" mat-raised-button color="primary" routerLink="{{item.ruta}}" >{{item.titulo}}</a> -->
       </ng-container>
     </div>
@@ -15,6 +15,17 @@
         <button mat-button (click)="sidenav.toggle()">
           <mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon>
         </button>
+        <img *ngIf="!isOpen" class="animated fadeInLeft img-user"  width="150px"  src="assets/logo-rdjxm_web.png" alt="">
+        <span class="example-fill-remaining-space"></span>
+        <span>{{title}}</span>
+        <span class="example-fill-remaining-space"></span>
+        <button mat-button [matMenuTriggerFor]="userMenu">
+          <img width="30px" class="img-user" src="assets/user.png" alt="">
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>Mi perfil</button>
+          <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+        </mat-menu>
       </mat-toolbar>
       <div class="content">
         <router-outlet main></router-outlet>

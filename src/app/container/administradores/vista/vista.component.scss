@@ -2,7 +2,7 @@
     height: 100%;
     width: 100%;
     overflow-y: auto;
-    overflow-x: hidden;
+    // overflow-x: hidden;
 }
 
 mat-table {
@@ -52,6 +52,10 @@ td.mat-column-position {
 .overflow-graph {
     overflow: hidden;
 }
+
+.mat-column-acciones {
+    max-width: 100px;
+  }
 
 .margin-20 {
     margin: 20px;

@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CommonModule,
     ContainerRoutingModule,
     MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule,
-    MatExpansionModule
+    MatExpansionModule, MatMenuModule
   ]
 })
 export class ContainerModule { }

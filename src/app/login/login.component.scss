@@ -9,7 +9,7 @@ $ancho-de-columna: 400px;
   width: 100%;
 }
 
-#background {
+video {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -22,6 +22,7 @@ mat-card {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background: #ff00002b;
 }
 
 img {

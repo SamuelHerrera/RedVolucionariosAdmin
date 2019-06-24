@@ -5,7 +5,8 @@ import { VistaComponent } from './vista/vista.component';
 const routes: Routes = [
   {
     path: '',
-    component: VistaComponent
+    component: VistaComponent,
+    data : {some_data : 'some value'}
   }
 ];
 
