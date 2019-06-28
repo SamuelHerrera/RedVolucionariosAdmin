@@ -1,0 +1,27 @@
+h3 {
+    margin: 0 0 10px;
+}
+
+pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+}
+
+.row.text-center {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container {
+    height: calc(100% - 40px);
+    overflow: auto;
+}
+
+.floating {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
