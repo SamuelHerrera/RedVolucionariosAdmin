@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DetalleComponent } from '../detalle/detalle.component';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 export interface Administrador {
   nombre: string;
@@ -14,7 +14,7 @@ export interface Administrador {
   editable?: boolean;
 }
 
-let ELEMENT_DATA: Administrador[] = [
+const ELEMENT_DATA: Administrador[] = [
   { nombre: 'Alberto Ramos Sois', email: 'beto.ramos@hotmail.com', estado: 'Zacatecas', distrito: '21', seccional: '305', estatus: 'Activo' },
   { nombre: 'Ana Paredes Perez', email: 'anitapape@gmail.com', estado: 'Yuctan', distrito: '05', seccional: '033', estatus: 'Activo' },
   { nombre: 'Hugo Ortiz Flores', email: 'hugof@gmail.com', estado: 'Guerrero', distrito: '03', seccional: '86', estatus: 'Activo' },
@@ -34,42 +34,16 @@ let ELEMENT_DATA: Administrador[] = [
 @Component({
   selector: 'app-vista',
   templateUrl: './vista.component.html',
-  styleUrls: ['./vista.component.scss']
+  styleUrls: ['./vista.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '50px', minHeight: '50px' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class VistaComponent implements OnInit {
-
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit() {
-    this.dataSource = new MatTableDataSource<Administrador>(ELEMENT_DATA);
-  }
-
-  tabs = ['Buscar'];
-  tabsData = [];
-  selected = new FormControl(0);
-  dataSource: MatTableDataSource<Administrador>;
-  aux: Administrador[] = ELEMENT_DATA;
-
-  addTab(item: Administrador, editable: boolean) {
-    item.editable = editable;
-    console.log(item);
-    this.tabsData.splice(0, 0, item);
-    this.tabs.splice(1, 0, item.nombre);
-    this.selected.setValue(1);
-  }
-
-  removeTab(index: number, item: Administrador, save?: boolean, newItem?: boolean) {
-    console.log(save, newItem);
-    if (save) {
-      if (newItem) {
-        //
-      } else {
-        this.editarRegistro(item);
-      }
-    }
-    this.tabs.splice(index, 1);
-    this.tabsData.splice(index - 1, 1);
-  }
 
   displayedColumns: string[] = [
     'nombre',
@@ -81,21 +55,63 @@ export class VistaComponent implements OnInit {
     'acciones'
   ];
 
+  tabs = ['Buscar'];
+  tabsData = [];
+  selected = new FormControl(0);
+  dataSource: MatTableDataSource<Administrador>;
+  aux: Administrador[] = ELEMENT_DATA;
+  expandedElement: Administrador | null;
+
+
+  constructor(public dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) { }
+
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource<Administrador>(ELEMENT_DATA);
+  }
+
+  addTab(item: Administrador, editable: boolean) {
+    item.editable = editable;
+    console.log(item);
+    this.tabsData.splice(0, 0, item);
+    this.tabs.splice(1, 0, item.nombre);
+    this.selected.setValue(1);
+    event.stopPropagation();
+  }
+
+  removeTab(index: number) {
+    this.tabs.splice(index, 1);
+    this.tabsData.splice(index - 1, 1);
+  }
+
+  saveTabData(item: Administrador, newItem?: boolean) {
+    if (newItem) {
+      //
+    } else {
+      this.editarRegistro(item);
+    }
+  }
+
+
   editarRegistro(item: Administrador) {
-    this.aux.map((returnableObjects: Administrador) => {
+    this.aux.map((returnableObjects: Administrador, index: number, array: Administrador[]) => {
       if (returnableObjects.nombre === item.nombre) {
-        console.log(item);
-        returnableObjects = item;
+        this.aux[index] = item;
       }
-    })
+    });
     this.dataSource = new MatTableDataSource<Administrador>(this.aux);
+    this.changeDetectorRefs.detectChanges();
+    console.log(this.aux);
   }
 
   borraRegistro(item: Administrador) {
     this.aux = this.aux.filter((returnableObjects: Administrador) => {
       return returnableObjects.nombre !== item.nombre;
-    })
+    });
     this.dataSource = new MatTableDataSource<Administrador>(this.aux);
+  }
+
+  changeKey(obj, newKey) {
+    obj = newKey;
   }
 
 }

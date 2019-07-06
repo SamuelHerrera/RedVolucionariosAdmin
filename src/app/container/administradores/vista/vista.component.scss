@@ -1,88 +1,110 @@
 .example-container {
-    height: 100%;
-    width: 100%;
-    overflow-y: auto;
-    // overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  // overflow-x: hidden;
 }
 
 mat-table {
-    width: 1500px;
+  width: 1500px;
 }
 
 :host ::ng-deep mat-tab-group {
-    height: 100%;
+  height: 100%;
 }
 
 :host ::ng-deep mat-tab-body {
-    height: 100%;
+  height: 100%;
 }
 
 :host ::ng-deep .mat-tab-body-wrapper {
-    height: 100%;
+  height: 100%;
 }
 
 :host ::ng-deep .mat-tab-group {
-    background: #ffe1d4;
-    background-image: url('/assets/bk-B.png');
+  background: #ffe1d4;
+  background-image: url('/assets/bk-B.png');
 }
 
 td.mat-column-star {
-    width: 20px;
-    padding-right: 8px;
+  width: 20px;
+  padding-right: 8px;
 }
 
 th.mat-column-position,
 td.mat-column-position {
-    padding-left: 8px;
+  padding-left: 8px;
 }
 
 .mat-table-sticky:first-child {
-    border-right: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
 }
 
 .mat-table-sticky:last-child {
-    border-left: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
 }
 
 .overflow-hidden {
-    overflow-y: auto;
-    overflow-x: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .overflow-graph {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .mat-column-acciones {
-    max-width: 100px;
-  }
+  max-width: 100px;
+}
 
 .margin-20 {
-    margin: 20px;
-    height: calc(100% - 88px);
+  margin: 20px;
+  height: calc(100% - 88px);
 
-    .row {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-    }
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
-    .right {
-        justify-content: flex-end;
-    }
+  .right {
+    justify-content: flex-end;
+  }
 
-    .wrap {
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
+  .wrap {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 
-    .example-spacer {
-        flex: 1 1 auto;
-    }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
 
-    .margin-input {
-        margin: 5px;
-    }
+  .margin-input {
+    margin: 5px;
+  }
+}
+
+mat-row.example-detail-row {
+  height: 0;
+  min-height: 0px;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-row {
+  border-bottom-width: 0;
+}
+
+mat-row:not(.example-expanded-row):hover {
+  background: #c0bcbc;
+}
+
+mat-row:not(.example-expanded-row):active {
+  background: #efefef;
 }
