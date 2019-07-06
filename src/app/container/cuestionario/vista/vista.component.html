@@ -1,0 +1,55 @@
+<div class="flex-item2">
+  <div class="flex-item2">
+    <div class="example-container">
+
+
+      <mat-form-field class="pregunta-input">
+        <input matInput placeholder="Pregunta" required>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Respuesta uno" required>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Respuesta dos" required>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Respuesta tres" required>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Respuesta cuatro" required>
+      </mat-form-field>
+
+      <button class="respuesta2">guardar</button>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="flex-item" *ngFor="let item of preguntas">
+
+  <div class="pregunta">
+    <div class="opciones">{{item.pregunta}}</div>
+    <div>{{item.r1}}</div>
+    <div>{{item.r2}}</div>
+    <div>{{item.r3}}</div>
+    <div>{{item.r4}}</div>
+  </div>
+
+  <div class="respuesta">
+    <button>1</button>
+    <button>2</button>
+    <mat-slide-toggle>Habilitar Pregunta</mat-slide-toggle>
+  </div>
+
+</div>
